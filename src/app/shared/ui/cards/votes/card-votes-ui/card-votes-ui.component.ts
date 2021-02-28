@@ -15,4 +15,8 @@ export class CardVotesUiComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  thumbSelected(selected: CheckedThumbData): void {
+    console.log(selected);
+  }
+
 }

@@ -1,11 +1,11 @@
 <div class="radio-btns">
-  <label class="radio-btns__element">
-    <input type="radio" name="test" value="small" class="radio-btns__element__item" [checked]="checkedThumb === 'up'">
+  <label id="radioThumbUp" class="radio-btns__element">
+    <input type="radio" name="test" value="small" class="radio-btns__element__item" (change)="changeThumbSelected(checkedThumbUp)" [checked]="checkedThumb === checkedThumbUp">
     <img src="assets/icons/thumb-up-small.svg"/>
   </label>
   
-  <label class="radio-btns__element">
-    <input type="radio" name="test" value="big" class="radio-btns__element__item" [checked]="checkedThumb === 'down'">
+  <label id="radioThumbDown" class="radio-btns__element">
+    <input type="radio" name="test" value="big" class="radio-btns__element__item" (change)="changeThumbSelected(checkedThumbDown)" [checked]="checkedThumb === checkedThumbDown">
     <img src="assets/icons/thumb-down-small.svg"/>
   </label>
 </div>

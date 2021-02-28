@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 export type CheckedThumbData = 'up' | 'down';
 
@@ -10,7 +10,15 @@ export type CheckedThumbData = 'up' | 'down';
 })
 export class ThumbsRadioComponent {
   @Input() checkedThumb: CheckedThumbData | undefined;
+  @Output() thumbSelected = new EventEmitter<CheckedThumbData>();
+
+  checkedThumbUp: CheckedThumbData = 'up';
+  checkedThumbDown: CheckedThumbData = 'down';
 
   constructor() { }
+
+  changeThumbSelected(selected: CheckedThumbData): void {
+    this.thumbSelected.emit(selected);
+  }
 
 }
