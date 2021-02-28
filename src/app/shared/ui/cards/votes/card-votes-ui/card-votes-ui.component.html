@@ -1,17 +1,37 @@
-<div class="card" style="background-image: url('assets/img/kanye-west.jpg');">
+<div class="card" style="background-image: url('assets/img/kanye-west.jpg')">
   <section class="card__content">
     <h2 class="card__content__title">
-      <span><img src="assets/icons/thumb-up-small.svg"/></span>
+      <span><img src="assets/icons/thumb-up-small.svg" /></span>
       Kanye West
     </h2>
     <small class="card__content__sub-title">1 month ago in Entretaiment</small>
-    <p class="card__content__info">Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero.</p>
+    <p class="card__content__info">
+      Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu
+      velit libero.
+    </p>
     <div class="card__content__actions">
-      <app-thumbs-radio *ngIf="!voteAgain" [id]="'thumbsRadio-' + idIndex" [idThumbUp]="'radioThumbUp-' + idIndex" [idThumbDown]="'radioThumbDown-' + idIndex" [checkedThumb]="checkedThumb" (thumbSelected)="thumbSelected($event)"></app-thumbs-radio>
-      <app-light-button [idButton]="'voteBtn-' + idIndex" [text]="voteAgain ? 'Vote again' : 'Vote now'" (click)="vote()"></app-light-button>
+      <app-thumbs-radio
+        *ngIf="!voteAgain"
+        [id]="'thumbsRadio-' + idIndex"
+        [idThumbUp]="'radioThumbUp-' + idIndex"
+        [idThumbDown]="'radioThumbDown-' + idIndex"
+        [nameThumb]="'radioThumb-' + idIndex"
+        [checkedThumb]="checkedThumb"
+        (thumbSelected)="thumbSelected($event)"
+      ></app-thumbs-radio>
+      <app-light-button
+        [idButton]="'voteBtn-' + idIndex"
+        [text]="voteAgain ? 'Vote again' : 'Vote now'"
+        (click)="vote()"
+      ></app-light-button>
     </div>
   </section>
   <div class="card__results">
-    <app-votes-result-bar  [resultBarLeft]="'resultBarLeft-' + idIndex" [resultBarRigth]="'resultBarRigth-' + idIndex" [likeQuantity]="0" [unLikeQuantity]="0"></app-votes-result-bar>
+    <app-votes-result-bar
+      [resultBarLeft]="'resultBarLeft-' + idIndex"
+      [resultBarRigth]="'resultBarRigth-' + idIndex"
+      [likeQuantity]="0"
+      [unLikeQuantity]="0"
+    ></app-votes-result-bar>
   </div>
 </div>

@@ -9,7 +9,7 @@ import { CheckedThumbData } from '../../../radio-btns/thumbs-radio/thumbs-radio.
 })
 export class CardVotesUiComponent implements OnInit {
 
-  @Input() idIndex = '0';
+  @Input() idIndex = 0;
 
   checkedThumb: CheckedThumbData = 'up';
   voteAgain = false;

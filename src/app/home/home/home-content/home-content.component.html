@@ -1,2 +1,6 @@
 <p>home-content works!</p>
-<app-card-votes-ui></app-card-votes-ui>
+<section class="content">
+  <ng-container *ngFor="let item of [0, 1, 2, 3, 4, 5]; let i = index">
+    <app-card-votes-ui [idIndex]="i"></app-card-votes-ui>
+  </ng-container>
+</section>

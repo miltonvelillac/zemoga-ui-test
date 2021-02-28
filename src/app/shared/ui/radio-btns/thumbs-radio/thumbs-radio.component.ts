@@ -12,6 +12,7 @@ export class ThumbsRadioComponent {
   @Input() checkedThumb: CheckedThumbData | undefined;
   @Input() idThumbUp = 'radioThumbUp';
   @Input() idThumbDown = 'radioThumbDown';
+  @Input() nameThumb = 'radioThumb';
 
   @Output() thumbSelected = new EventEmitter<CheckedThumbData>();
 
