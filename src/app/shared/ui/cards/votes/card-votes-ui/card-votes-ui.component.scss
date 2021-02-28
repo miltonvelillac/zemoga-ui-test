@@ -3,20 +3,15 @@
 $margin-content: 40px;
 $max-width-card: 493px;
 
-.card {
+.card {  
+  width: 100vw;
   max-width: $max-width-card;
   min-height: 550px;
   box-shadow: 1px 1px 5px 1px rgb(232 232 232);
   display: flex;
   flex-direction: column;
-
-  @include mq-up(xs) {
-    width: 320px;
-  }
-
-  @include mq-up(sm) {
-    width: $max-width-card;
-  }
+  background-position: center;
+  background-repeat: no-repeat;
 
   &__content {
     position: relative;
@@ -29,13 +24,20 @@ $max-width-card: 493px;
     }
 
     &__title {
-      position: relative;
-      right: $margin-content;      
-      font-size: 2.5rem;
-      font-weight: 100;
-      margin: 0;
-      &__space {
-        margin-left: $margin-content - 9px;
+      display: flex;
+      align-items: center; 
+      &__icon {
+        position: absolute;
+        left: -$margin-content; 
+        &__space {
+          margin-left: $margin-content - 9px;
+        }
+      }
+      
+      &__text {
+        font-size: 2.5rem;
+        font-weight: 100;
+        margin: 0;
       }
     }
     &__sub-title {

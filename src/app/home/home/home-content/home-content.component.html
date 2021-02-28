@@ -1,6 +1,8 @@
-<p>home-content works!</p>
 <section class="content">
-  <ng-container *ngFor="let vote of votes; let i = index">
-    <app-card-votes-ui [idIndex]="i" [voteData]="vote"></app-card-votes-ui>
-  </ng-container>
+  <h1 class="content__title">Votes</h1>
+  <div class="content__cards">
+    <ng-container *ngFor="let vote of votes; let i = index">
+      <app-card-votes-ui [idIndex]="i" [voteData]="vote"></app-card-votes-ui>
+    </ng-container>
+  </div>
 </section>

@@ -1,10 +1,13 @@
 <div *ngIf="voteData" class="card" [ngStyle]="{'background-image': getBackgroundImage()}">
   <section class="card__content">
-    <h2 class="card__content__title">
-      <img [src]="nameIcon" [id]="'cardImg-' + idIndex"/>
-      <span *ngIf="!nameIcon" class="card__content__title__space"></span>
-      {{voteData.title}}
-    </h2>
+    <div class="card__content__title">
+      <div class="card__content__title__icon">
+        <img [src]="nameIcon" [id]="'cardImg-' + idIndex"/>
+      </div>
+      <h2 class="card__content__title__text">
+        {{voteData.title}}
+      </h2>
+    </div>
     <small class="card__content__sub-title">{{voteData?.subTitle}}</small>
     <p class="card__content__info" [id]="'cardContentInfo-' + idIndex">
       {{getTextInfo()}}

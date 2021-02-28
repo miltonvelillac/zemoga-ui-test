@@ -1,6 +1,24 @@
+@import "mixins";
+
 .content {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 50px;
+  flex-direction: column;
+
+  @include mq-between(sm, lg) {
+    align-items: center;
+  }
+
+  &__title {
+    margin-left: 10px;
+    @include mq-up(sm) {
+      margin-left: 0;
+    }
+  }
+
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+  }
 }
