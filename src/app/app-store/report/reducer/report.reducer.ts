@@ -1,24 +1,6 @@
-import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
-import { createFeatureSelector, createReducer, on } from "@ngrx/store";
-import { Report } from "src/app/shared/models/report.model";
+import { createReducer, on } from "@ngrx/store";
 import * as ReportActions from '../actions/report.action';
-
-export const reportFeatureKey = 'reports';
-export const reportFeatureSelector = createFeatureSelector<ReporState>(reportFeatureKey);
-
-export interface ReporState extends EntityState<Report> {
-  loadingGetAllReports: boolean;
-  loadingUpdateLikeUnlikeReport: boolean;
-}
-
-export const reportAdapter: EntityAdapter<Report> = createEntityAdapter<Report>({
-  selectId: (report: Report) => report.id
-});
-
-export const reportInitialState: ReporState = reportAdapter.getInitialState({
-  loadingGetAllReports: false,
-  loadingUpdateLikeUnlikeReport: false
-});
+import { reportAdapter, reportInitialState } from "../report.store";
 
 export const reportReducer = createReducer(
   reportInitialState,

@@ -3,7 +3,8 @@ import { reportsMock } from "src/app/shared/mocks/report.mock";
 import { Report } from "src/app/shared/models/report.model";
 import { CloneDataInDeep } from 'typescript-clone-data-in-deep';
 import * as ReportActions from '../actions/report.action';
-import { ReporState, reportInitialState, reportReducer } from "./report.reducer";
+import { ReporState, reportInitialState } from "../report.store";
+import { reportReducer } from "./report.reducer";
 
 describe('ReportReducer', () => {
   describe('#GetAllReports', () => {
