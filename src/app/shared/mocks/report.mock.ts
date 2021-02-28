@@ -1,6 +1,6 @@
-import { Vote } from "../models/vote.model";
+import { Report } from "../models/report.model";
 
-export const votesMock: Vote[] = [
+export const reportsMock: Report[] = [
   {
     id: '123',
     img: 'assets/img/kanye-west.jpg',

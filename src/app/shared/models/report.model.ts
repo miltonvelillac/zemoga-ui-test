@@ -1,4 +1,4 @@
-export interface Vote {
+export interface Report {
   id: string;
   img: string;
   title: string;

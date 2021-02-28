@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { votesMock } from 'src/app/shared/mocks/vote.mock';
-import { Vote } from 'src/app/shared/models/vote.model';
+import { reportsMock } from 'src/app/shared/mocks/report.mock';
+import { Report } from 'src/app/shared/models/report.model';
 
 @Component({
   selector: 'app-home-content',
@@ -10,15 +10,15 @@ import { Vote } from 'src/app/shared/models/vote.model';
 })
 export class HomeContentComponent implements OnInit {
 
-  votes: Vote[] = votesMock;
+  reports: Report[] = reportsMock;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  votesElementId(_: number, voteItem: Vote): string {
-    return voteItem.id;
+  reportElementId(_: number, reportItem: Report): string {
+    return reportItem.id;
   }
 
 }

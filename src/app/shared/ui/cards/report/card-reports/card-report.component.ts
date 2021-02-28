@@ -1,17 +1,17 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { Vote } from 'src/app/shared/models/vote.model';
+import { Report } from 'src/app/shared/models/report.model';
 import { CheckedThumbData } from '../../../radio-btns/thumbs-radio/thumbs-radio.component';
 
 @Component({
-  selector: 'app-card-votes-ui',
-  templateUrl: './card-votes-ui.component.html',
-  styleUrls: ['./card-votes-ui.component.scss'],
+  selector: 'app-card-report',
+  templateUrl: './card-report.component.html',
+  styleUrls: ['./card-report.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CardVotesUiComponent implements OnInit {
+export class CardReportComponent implements OnInit {
 
   @Input() idIndex = 0;
-  @Input() voteData: Vote | undefined;
+  @Input() report: Report | undefined;
 
   checkedThumb: CheckedThumbData = 'up';
   nameIcon: string | undefined;
@@ -40,11 +40,11 @@ export class CardVotesUiComponent implements OnInit {
   }
 
   getBackgroundImage(): string {
-    return `url(${this.voteData?.img})`;
+    return `url(${this.report?.img})`;
   }
 
   getTextInfo(): string {
-    return this.voteAgain ? 'Thank you for voting!' : `${this.voteData?.description}`;
+    return this.voteAgain ? 'Thank you for voting!' : `${this.report?.description}`;
   }
 
 }

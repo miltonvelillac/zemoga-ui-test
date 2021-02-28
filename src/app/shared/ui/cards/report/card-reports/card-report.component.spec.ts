@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { votesMock } from 'src/app/shared/mocks/vote.mock';
+import { reportsMock } from 'src/app/shared/mocks/report.mock';
 import { LightButtonComponent } from '../../../buttons/light-button/light-button.component';
 import { ThumbsRadioComponent } from '../../../radio-btns/thumbs-radio/thumbs-radio.component';
 import { VotesResultBarComponent } from '../../../statistics/votes-result-bar/votes-result-bar.component';
 
-import { CardVotesUiComponent } from './card-votes-ui.component';
+import { CardReportComponent } from './card-report.component';
 
-describe('CardVotesUiComponent', () => {
-  let component: CardVotesUiComponent;
-  let fixture: ComponentFixture<CardVotesUiComponent>;
+describe('CardReportComponent', () => {
+  let component: CardReportComponent;
+  let fixture: ComponentFixture<CardReportComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-        CardVotesUiComponent,
+        CardReportComponent,
         ThumbsRadioComponent,
         LightButtonComponent,
         VotesResultBarComponent
@@ -23,7 +23,7 @@ describe('CardVotesUiComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CardVotesUiComponent);
+    fixture = TestBed.createComponent(CardReportComponent);
     component = fixture.componentInstance;
   });
 
@@ -34,7 +34,7 @@ describe('CardVotesUiComponent', () => {
 
   describe('#thumbSelected', () => {
     beforeEach(() => {
-      component.voteData = {...votesMock[0]};
+      component.report = {...reportsMock[0]};
     });
 
     it(`Should set the correct thumbSelected data`, () => {
@@ -65,9 +65,9 @@ describe('CardVotesUiComponent', () => {
   });
 
   describe('#voteBtn', () => {
-    let voteData = {...votesMock[0]};
+    let reportData = {...reportsMock[0]};
     beforeEach(() => {
-      component.voteData = voteData;
+      component.report = reportData;
     });
 
     it(`When voteBtn is clicked and the user is voting the text content button changes to Vote again and the thumbsRadio component disappear`, () => {
@@ -128,7 +128,7 @@ describe('CardVotesUiComponent', () => {
       expect(component.voteAgain).toBe(false);
       expect(thumbsRadio).not.toBeNull();
       expect(voteBtn.textContent).toContain('Vote now');
-      expect(cardContentInfo.textContent).toContain(voteData.description);   
+      expect(cardContentInfo.textContent).toContain(reportData.description);   
     });
   });
 });

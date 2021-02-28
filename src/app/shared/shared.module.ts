@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardVotesUiComponent } from './ui/cards/votes/card-votes-ui/card-votes-ui.component';
+import { CardReportComponent } from './ui/cards/report/card-reports/card-report.component';
 import { LightButtonComponent } from './ui/buttons/light-button/light-button.component';
 import { ThumbsRadioComponent } from './ui/radio-btns/thumbs-radio/thumbs-radio.component';
 import { VotesResultBarComponent } from './ui/statistics/votes-result-bar/votes-result-bar.component';
@@ -9,7 +9,7 @@ import { VotesResultBarComponent } from './ui/statistics/votes-result-bar/votes-
 
 @NgModule({
   declarations: [
-    CardVotesUiComponent,
+    CardReportComponent,
     LightButtonComponent,
     ThumbsRadioComponent,
     VotesResultBarComponent
@@ -18,7 +18,7 @@ import { VotesResultBarComponent } from './ui/statistics/votes-result-bar/votes-
     CommonModule
   ],
   exports: [
-    CardVotesUiComponent
+    CardReportComponent
   ]
 })
 export class SharedModule { }

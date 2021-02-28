@@ -1,14 +1,14 @@
-<div *ngIf="voteData" class="card" [ngStyle]="{'background-image': getBackgroundImage()}">
+<div *ngIf="report" class="card" [ngStyle]="{'background-image': getBackgroundImage()}">
   <section class="card__content">
     <div class="card__content__title">
       <div class="card__content__title__icon">
         <img [src]="nameIcon" [id]="'cardImg-' + idIndex"/>
       </div>
       <h2 class="card__content__title__text">
-        {{voteData.title}}
+        {{report.title}}
       </h2>
     </div>
-    <small class="card__content__sub-title">{{voteData?.subTitle}}</small>
+    <small class="card__content__sub-title">{{report?.subTitle}}</small>
     <p class="card__content__info" [id]="'cardContentInfo-' + idIndex">
       {{getTextInfo()}}
     </p>
@@ -33,8 +33,8 @@
     <app-votes-result-bar
       [resultBarLeft]="'resultBarLeft-' + idIndex"
       [resultBarRigth]="'resultBarRigth-' + idIndex"
-      [likeQuantity]="voteData.like"
-      [unLikeQuantity]="voteData.unlike"
+      [likeQuantity]="report.like"
+      [unLikeQuantity]="report.unlike"
     ></app-votes-result-bar>
   </div>
 </div>
