@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { votesMock } from 'src/app/shared/mocks/vote.mock';
 import { LightButtonComponent } from '../../../buttons/light-button/light-button.component';
 import { ThumbsRadioComponent } from '../../../radio-btns/thumbs-radio/thumbs-radio.component';
 import { VotesResultBarComponent } from '../../../statistics/votes-result-bar/votes-result-bar.component';
@@ -32,6 +33,10 @@ describe('CardVotesUiComponent', () => {
   });
 
   describe('#thumbSelected', () => {
+    beforeEach(() => {
+      component.voteData = {...votesMock[0]};
+    });
+
     it(`Should set the correct thumbSelected data`, () => {
       // Arrange:
       component.checkedThumb = 'down';
@@ -60,6 +65,11 @@ describe('CardVotesUiComponent', () => {
   });
 
   describe('#voteBtn', () => {
+    let voteData = {...votesMock[0]};
+    beforeEach(() => {
+      component.voteData = voteData;
+    });
+
     it(`When voteBtn is clicked and the user is voting the text content button changes to Vote again and the thumbsRadio component disappear`, () => {
       // Arrange:
       component.checkedThumb = 'down';
@@ -73,11 +83,13 @@ describe('CardVotesUiComponent', () => {
 
       const thumbsRadio: HTMLElement = fixture.nativeElement.querySelector(`#thumbsRadio-0`);
       const cardImg = fixture.nativeElement.querySelector('#cardImg-0');
+      const cardContentInfo = fixture.nativeElement.querySelector('#cardContentInfo-0');
 
       // Assert:      
       expect(component.voteAgain).toBe(true);
       expect(thumbsRadio).toBeNull();
       expect(voteBtn.textContent).toContain('Vote again');
+      expect(cardContentInfo.textContent).toContain('Thank you for voting!');
       expect(cardImg.src).toContain('thumb-down-small.svg');
     });
 
@@ -110,11 +122,13 @@ describe('CardVotesUiComponent', () => {
       component.cdr.detectChanges();
 
       const thumbsRadio: HTMLElement = fixture.nativeElement.querySelector(`#thumbsRadio-0`);
+      const cardContentInfo = fixture.nativeElement.querySelector('#cardContentInfo-0');
 
       // Assert:      
       expect(component.voteAgain).toBe(false);
       expect(thumbsRadio).not.toBeNull();
-      expect(voteBtn.textContent).toContain('Vote now');      
+      expect(voteBtn.textContent).toContain('Vote now');
+      expect(cardContentInfo.textContent).toContain(voteData.description);   
     });
   });
 });

@@ -34,7 +34,12 @@
               "src/styles.scss",
               "src/normalize.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/themes"
+              ]
+            }
           },
           "configurations": {
             "production": {
@@ -98,7 +103,12 @@
               "src/styles.scss",
               "src/normalize.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/themes"
+              ]
+            }
           }
         },
         "lint": {

@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { votesMock } from 'src/app/shared/mocks/vote.mock';
+import { Vote } from 'src/app/shared/models/vote.model';
 
 @Component({
   selector: 'app-home-content',
@@ -7,6 +9,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeContentComponent implements OnInit {
+
+  votes: Vote[] = votesMock;
 
   constructor() { }
 

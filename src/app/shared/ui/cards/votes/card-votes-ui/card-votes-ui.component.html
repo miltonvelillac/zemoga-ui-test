@@ -1,14 +1,13 @@
-<div class="card" style="background-image: url('assets/img/kanye-west.jpg')">
+<div *ngIf="voteData" class="card" [ngStyle]="{'background-image': getBackgroundImage()}">
   <section class="card__content">
     <h2 class="card__content__title">
       <img [src]="nameIcon" [id]="'cardImg-' + idIndex"/>
       <span *ngIf="!nameIcon" class="card__content__title__space"></span>
-      Kanye West
+      {{voteData.title}}
     </h2>
-    <small class="card__content__sub-title">1 month ago in Entretaiment</small>
-    <p class="card__content__info">
-      Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu
-      velit libero.
+    <small class="card__content__sub-title">{{voteData?.subTitle}}</small>
+    <p class="card__content__info" [id]="'cardContentInfo-' + idIndex">
+      {{getTextInfo()}}
     </p>
     <div class="card__content__actions">
       <app-thumbs-radio
@@ -31,8 +30,8 @@
     <app-votes-result-bar
       [resultBarLeft]="'resultBarLeft-' + idIndex"
       [resultBarRigth]="'resultBarRigth-' + idIndex"
-      [likeQuantity]="0"
-      [unLikeQuantity]="0"
+      [likeQuantity]="voteData.like"
+      [unLikeQuantity]="voteData.unlike"
     ></app-votes-result-bar>
   </div>
 </div>
