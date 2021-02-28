@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ThumbsRadioComponent } from './thumbs-radio.component';
 
-fdescribe('ThumbsRadioComponent', () => {
+describe('ThumbsRadioComponent', () => {
   let component: ThumbsRadioComponent;
   let fixture: ComponentFixture<ThumbsRadioComponent>;
 
