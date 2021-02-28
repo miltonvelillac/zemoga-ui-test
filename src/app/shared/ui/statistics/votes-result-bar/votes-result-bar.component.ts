@@ -7,6 +7,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VotesResultBarComponent {
+  @Input() resultBarLeft = 'resultBarLeft';
+  @Input() resultBarRigth = 'resultBarRigth';
   @Input() likeQuantity = 0;
   @Input() unLikeQuantity = 0;
 

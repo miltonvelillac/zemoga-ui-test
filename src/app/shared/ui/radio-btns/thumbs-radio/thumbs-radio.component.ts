@@ -10,6 +10,9 @@ export type CheckedThumbData = 'up' | 'down';
 })
 export class ThumbsRadioComponent {
   @Input() checkedThumb: CheckedThumbData | undefined;
+  @Input() idThumbUp = 'radioThumbUp';
+  @Input() idThumbDown = 'radioThumbDown';
+
   @Output() thumbSelected = new EventEmitter<CheckedThumbData>();
 
   checkedThumbUp: CheckedThumbData = 'up';

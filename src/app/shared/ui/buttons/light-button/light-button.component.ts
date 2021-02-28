@@ -8,6 +8,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 })
 export class LightButtonComponent {
 
+  @Input() idButton = 'lightButton';
   @Input() text = '';
 
   constructor() { }

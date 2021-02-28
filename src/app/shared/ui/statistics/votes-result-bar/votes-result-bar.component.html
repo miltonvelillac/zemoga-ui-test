@@ -1,9 +1,9 @@
 <div class="result-bar">
-  <div id="resultBarLeft" class="result-bar__left" [ngStyle]="{'width': getWithStyle(likeQuantity)}">
+  <div [id]="resultBarLeft" class="result-bar__left" [ngStyle]="{'width': getWithStyle(likeQuantity)}">
     <img src="assets/icons/thumb-up.svg" class="result-bar__left__icon"/>
     <div class="result-bar__left__text">{{getLikeUnlikePercentage(likeQuantity)}}%</div>
   </div>
-  <div id="resultBarRigth" class="result-bar__rigth" [ngStyle]="{'width': getWithStyle(unLikeQuantity)}">
+  <div [id]="resultBarRigth" class="result-bar__rigth" [ngStyle]="{'width': getWithStyle(unLikeQuantity)}">
     <div class="result-bar__rigth__text">{{getLikeUnlikePercentage(unLikeQuantity)}}%</div>
     <img src="assets/icons/thumb-down.svg" class="result-bar__rigth__icon"/>
   </div>

@@ -7,11 +7,11 @@
     <small class="card__content__sub-title">1 month ago in Entretaiment</small>
     <p class="card__content__info">Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero.</p>
     <div class="card__content__actions">
-      <app-thumbs-radio [checkedThumb]="checkedThumb" (thumbSelected)="thumbSelected($event)"></app-thumbs-radio>
-      <app-light-button [text]="'Vote now'"></app-light-button>
+      <app-thumbs-radio *ngIf="!voteAgain" [id]="'thumbsRadio-' + idIndex" [idThumbUp]="'radioThumbUp-' + idIndex" [idThumbDown]="'radioThumbDown-' + idIndex" [checkedThumb]="checkedThumb" (thumbSelected)="thumbSelected($event)"></app-thumbs-radio>
+      <app-light-button [idButton]="'voteBtn-' + idIndex" [text]="voteAgain ? 'Vote again' : 'Vote now'" (click)="vote()"></app-light-button>
     </div>
   </section>
   <div class="card__results">
-    <app-votes-result-bar [likeQuantity]="0" [unLikeQuantity]="0"></app-votes-result-bar>
+    <app-votes-result-bar  [resultBarLeft]="'resultBarLeft-' + idIndex" [resultBarRigth]="'resultBarRigth-' + idIndex" [likeQuantity]="0" [unLikeQuantity]="0"></app-votes-result-bar>
   </div>
 </div>
