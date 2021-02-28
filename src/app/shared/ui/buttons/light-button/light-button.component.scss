@@ -1,0 +1,17 @@
+.button {
+  background-color: transparent;
+  border: solid 0.01rem #fff;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  &:hover {
+    opacity: 70%;
+    border-width: 0.1rem;
+  }
+  &:active {
+    opacity: 80%;
+  }
+}
