@@ -60,7 +60,7 @@ describe('ReportReducer', () => {
         ...reportInitialState,
         loadingUpdateLikeUnlikeReport
       };
-      const action = ReportActions.updateLikeUnlikeReport({ id: '1', isLike: true });
+      const action = ReportActions.updateLikeUnlikeReport({ id: '1', vote: 'down' });
 
       // Act:
       const newState = reportReducer(currentState, action);

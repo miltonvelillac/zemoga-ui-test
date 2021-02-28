@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { reportsMock } from '../../mocks/report.mock';
 import { Report } from '../../models/report.model';
+import { CheckedThumbData } from '../../ui/radio-btns/thumbs-radio/thumbs-radio.component';
 import { StoragaManagment } from '../../utils/storage/storaga.class';
 
 @Injectable({
@@ -23,12 +24,12 @@ export class ReportService {
     return of(reports).pipe(delay(1000));
   }
 
-  updateLikeUnlikeReport(id: string, isLike: boolean): Observable<Report | undefined> {
+  updateLikeUnlikeReport(id: string, vote: CheckedThumbData): Observable<Report | undefined> {
     const reports: Report[] = StoragaManagment.getLocalStorage(this.storageName);
     let updatedReport: Report | undefined;
     const reportToUpdate = reports.map(report => {
       if (report.id === id) {
-        updatedReport = isLike ? {...report, like: report.like++} : {...report, unlike: report.unlike++};
+        updatedReport = vote === 'up' ? {...report, like: report.like++} : {...report, unlike: report.unlike++};
         return updatedReport;
       }
       return report;

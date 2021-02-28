@@ -8,6 +8,7 @@ import { Report } from 'src/app/shared/models/report.model';
 import { CloneDataInDeep } from 'typescript-clone-data-in-deep';
 import { reportsMock } from 'src/app/shared/mocks/report.mock';
 import { reportInitialState } from '../report.store';
+import { CheckedThumbData } from 'src/app/shared/ui/radio-btns/thumbs-radio/thumbs-radio.component';
 
 
 describe('ReportHandler', () => {
@@ -48,12 +49,12 @@ describe('ReportHandler', () => {
     it('should call to dispatch method with updateLikeUnlikeReport action', () => {
       // Arrange:
       const id = '123';
-      const isLike = true;
+      const vote: CheckedThumbData = 'down';
 
-      const action = ReportActions.updateLikeUnlikeReport({ id, isLike });
+      const action = ReportActions.updateLikeUnlikeReport({ id, vote });
 
       // Act:
-      handler.updateLikeUnlikeReport(id, isLike);
+      handler.updateLikeUnlikeReport(id, vote);
 
       // Assert:
       expect(handler.store$.dispatch).toHaveBeenCalledOnceWith(action);

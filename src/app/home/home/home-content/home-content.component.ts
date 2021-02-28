@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { ReportHandler } from 'src/app/app-store/report/handler/report.handler';
-import { reportsMock } from 'src/app/shared/mocks/report.mock';
 import { Report } from 'src/app/shared/models/report.model';
+import { CheckedThumbData } from 'src/app/shared/ui/radio-btns/thumbs-radio/thumbs-radio.component';
 import { SubCollection } from 'src/app/shared/utils/rx/sub-collection';
 
 @Component({
@@ -45,6 +45,10 @@ export class HomeContentComponent implements OnInit, OnDestroy {
 
   reportElementId(_: number, reportItem: Report): string {
     return reportItem.id;
+  }
+
+  voteSelection({id, vote}: {id: string, vote: CheckedThumbData}): void {
+this.reportHandler.updateLikeUnlikeReport(id, vote);
   }
 
 }

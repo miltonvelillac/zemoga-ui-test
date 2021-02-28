@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { reportsMock } from 'src/app/shared/mocks/report.mock';
+import { CloneDataInDeep } from 'typescript-clone-data-in-deep';
 import { LightButtonComponent } from '../../../buttons/light-button/light-button.component';
 import { ThumbsRadioComponent } from '../../../radio-btns/thumbs-radio/thumbs-radio.component';
 import { VotesResultBarComponent } from '../../../statistics/votes-result-bar/votes-result-bar.component';
@@ -74,6 +75,10 @@ describe('CardReportComponent', () => {
       // Arrange:
       component.checkedThumb = 'down';
       component.voteAgain = false;
+      component.report = { ...reportsMock[0], id: '123'};
+
+      spyOn(component.voteSelection, 'emit');
+
       fixture.detectChanges();
 
       // Act:
@@ -91,6 +96,7 @@ describe('CardReportComponent', () => {
       expect(voteBtn.textContent).toContain('Vote again');
       expect(cardContentInfo.textContent).toContain('Thank you for voting!');
       expect(cardImg.src).toContain('thumb-down-small.svg');
+      expect(component.voteSelection.emit).toHaveBeenCalledOnceWith({id: '123', vote: 'down'});
     });
 
 

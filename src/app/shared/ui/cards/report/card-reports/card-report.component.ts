@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Report } from 'src/app/shared/models/report.model';
 import { CheckedThumbData } from '../../../radio-btns/thumbs-radio/thumbs-radio.component';
 
@@ -8,10 +8,12 @@ import { CheckedThumbData } from '../../../radio-btns/thumbs-radio/thumbs-radio.
   styleUrls: ['./card-report.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CardReportComponent implements OnInit {
+export class CardReportComponent {
 
   @Input() idIndex = 0;
   @Input() report: Report | undefined;
+
+  @Output() voteSelection = new EventEmitter<{id: string, vote: CheckedThumbData}>();
 
   checkedThumb: CheckedThumbData = 'up';
   nameIcon: string | undefined;
@@ -21,9 +23,6 @@ export class CardReportComponent implements OnInit {
     public cdr: ChangeDetectorRef
   ) { }
 
-  ngOnInit(): void {
-  }
-
   thumbSelected(selected: CheckedThumbData): void {
     this.checkedThumb = selected;
   }
@@ -32,6 +31,7 @@ export class CardReportComponent implements OnInit {
     this.voteAgain = !this.voteAgain;
     if (!this.voteAgain) { return; }
     console.log(this.checkedThumb);
+    this.voteSelection.emit({id: this.report?.id || '', vote: this.checkedThumb});
     this.setNameIcon();
   }
 

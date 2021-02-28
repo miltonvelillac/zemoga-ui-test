@@ -84,7 +84,7 @@ describe('ReportEffects', () => {
       const report: Report = { ...reportsMock[0], like: 200 };
       const updatedReportFromService: Report = { ...report, like: 201 };
       const updatedReport: Update<Report> = {id: report.id, changes: { ...report, like: 201 }};
-      const action = ReportActions.updateLikeUnlikeReport({id: report.id, isLike: true});
+      const action = ReportActions.updateLikeUnlikeReport({id: report.id, vote: 'up'});
       const actionSuccess: any = ReportActions.updateLikeUnlikeReportSuccess({ report: updatedReport });
 
       let resp;
@@ -103,7 +103,7 @@ describe('ReportEffects', () => {
     it(`Should return a fail action called getAllReportsFail`, () => {
       // Arrange
       const report: Report = { ...reportsMock[0], like: 200 };
-      const action = ReportActions.updateLikeUnlikeReport({id: report.id, isLike: true});
+      const action = ReportActions.updateLikeUnlikeReport({id: report.id, vote: 'up'});
       const actionFail: any = ReportActions.updateLikeUnlikeReportFail();
 
       let resp;

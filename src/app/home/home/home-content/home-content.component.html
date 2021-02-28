@@ -2,7 +2,7 @@
   <h1 class="content__title">Votes</h1>
   <div class="content__cards">
     <ng-container *ngFor="let report of reports; let i = index; trackBy: reportElementId;">
-      <app-card-report [idIndex]="i" [report]="report"></app-card-report>
+      <app-card-report [idIndex]="i" [report]="report" (voteSelection)="voteSelection($event)"></app-card-report>
     </ng-container>
   </div>
 </section>
