@@ -17,4 +17,8 @@ export class HomeContentComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  votesElementId(_: number, voteItem: Vote): string {
+    return voteItem.id;
+  }
+
 }

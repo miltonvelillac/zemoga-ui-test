@@ -1,7 +1,7 @@
 <section class="content">
   <h1 class="content__title">Votes</h1>
   <div class="content__cards">
-    <ng-container *ngFor="let vote of votes; let i = index">
+    <ng-container *ngFor="let vote of votes; let i = index; trackBy: votesElementId;">
       <app-card-votes-ui [idIndex]="i" [voteData]="vote"></app-card-votes-ui>
     </ng-container>
   </div>

@@ -20,7 +20,7 @@ $max-width-card: 493px;
     color: #fff;
 
     @include mq-up(sm) {
-      top: 300px;
+      top: 250px;
     }
 
     &__title {

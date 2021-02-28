@@ -1,4 +1,5 @@
 export interface Vote {
+  id: string;
   img: string;
   title: string;
   subTitle: string;
