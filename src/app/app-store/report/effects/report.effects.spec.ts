@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
+import { Update } from '@ngrx/entity';
 import { provideMockStore } from '@ngrx/store/testing';
 import { of, ReplaySubject, throwError } from 'rxjs';
 import { reportsMock } from 'src/app/shared/mocks/report.mock';
@@ -81,13 +82,14 @@ describe('ReportEffects', () => {
     it(`Should return a success action called getAllReportsSuccess with reports data`, () => {
       // Arrange
       const report: Report = { ...reportsMock[0], like: 200 };
-      const updatedReport: Report = { ...report, like: 201 };
+      const updatedReportFromService: Report = { ...report, like: 201 };
+      const updatedReport: Update<Report> = {id: report.id, changes: { ...report, like: 201 }};
       const action = ReportActions.updateLikeUnlikeReport({id: report.id, isLike: true});
       const actionSuccess: any = ReportActions.updateLikeUnlikeReportSuccess({ report: updatedReport });
 
       let resp;
 
-      spyOn(effects.reportService, 'updateLikeUnlikeReport').and.returnValue(of(updatedReport));
+      spyOn(effects.reportService, 'updateLikeUnlikeReport').and.returnValue(of(updatedReportFromService));
 
       // Act
       actions$.next(action);

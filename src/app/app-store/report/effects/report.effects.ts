@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Update } from '@ngrx/entity';
 import { of } from 'rxjs';
 import { catchError, exhaustMap, map } from 'rxjs/operators';
 import { Report } from 'src/app/shared/models/report.model';
@@ -21,7 +22,8 @@ export class ReportEffects {
   updateLikeUnlikeReport$ = createEffect(() => this.actions$.pipe(
     ofType(ReportActions.updateLikeUnlikeReport),
     exhaustMap(({id, isLike}) => this.reportService.updateLikeUnlikeReport(id, isLike).pipe(
-      map((report: Report | undefined) => ReportActions.updateLikeUnlikeReportSuccess({ report })),
+      map((report: Report | undefined) => report ? {id: report.id, changes: report} : undefined),
+      map((report: Update<Report> | undefined) => ReportActions.updateLikeUnlikeReportSuccess({ report })),
       catchError(() => of(ReportActions.updateLikeUnlikeReportFail()))
     ))
   ));

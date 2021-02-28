@@ -25,6 +25,7 @@
     "@ngrx/store-devtools": "^11.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
+    "typescript-clone-data-in-deep": "^1.0.8",
     "zone.js": "~0.11.3"
   },
   "devDependencies": {
