@@ -6,6 +6,7 @@ import { HomeHeaderComponent } from './home/home-header/home-header.component';
 import { HomeInfoComponent } from './home/home-info/home-info.component';
 import { HomeContentComponent } from './home/home-content/home-content.component';
 import { HomeContactComponent } from './home/home-contact/home-contact.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -19,7 +20,8 @@ import { HomeContactComponent } from './home/home-contact/home-contact.component
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    SharedModule
   ]
 })
 export class HomeModule { }
