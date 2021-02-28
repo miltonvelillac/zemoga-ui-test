@@ -7,6 +7,11 @@ import { HomeInfoComponent } from './home/home-info/home-info.component';
 import { HomeContentComponent } from './home/home-content/home-content.component';
 import { HomeContactComponent } from './home/home-contact/home-contact.component';
 import { SharedModule } from '../shared/shared.module';
+import { EffectsModule } from '@ngrx/effects';
+import { ReportEffects } from '../app-store/report/effects/report.effects';
+import { StoreModule } from '@ngrx/store';
+import { reportFeatureKey } from '../app-store/report/report.store';
+import { reportReducer } from '../app-store/report/reducer/report.reducer';
 
 
 
@@ -21,7 +26,9 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    SharedModule
+    SharedModule,
+    StoreModule.forFeature(reportFeatureKey, reportReducer),
+    EffectsModule.forFeature([ReportEffects])
   ]
 })
 export class HomeModule { }

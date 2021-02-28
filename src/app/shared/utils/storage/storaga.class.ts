@@ -4,7 +4,8 @@ export class StoragaManagment {
   }
 
   static getLocalStorage(dataName: string): any {
-    return JSON.parse(localStorage.getItem(dataName) || '');
+    const data = localStorage.getItem(dataName);
+    return data ? JSON.parse(data) : undefined;
   }
 
   static clearSessionStorageByName(dataName: string): void {
