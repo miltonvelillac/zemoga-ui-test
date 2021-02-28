@@ -3,6 +3,7 @@ import { of } from 'rxjs';
 import { ReportHandler } from 'src/app/app-store/report/handler/report.handler';
 import { reportsMock } from 'src/app/shared/mocks/report.mock';
 import { Report } from 'src/app/shared/models/report.model';
+import { CheckedThumbData } from 'src/app/shared/ui/radio-btns/thumbs-radio/thumbs-radio.component';
 import { instance, mock } from 'ts-mockito';
 import { CloneDataInDeep } from 'typescript-clone-data-in-deep';
 import { HomeContentComponent } from './home-content.component';
@@ -59,6 +60,24 @@ describe('HomeContentComponent', () => {
 
       // Assert:      
       expect(component.reports).toEqual(reports);
+    });
+  });
+
+  describe('#voteSelection', () => {
+    it(`When voteSelection is called the application should call the updateLikeUnlikeReport handler method`, () => {
+      // Arrange:
+      const id = '123';
+      const vote: CheckedThumbData = 'down';
+
+      fixture.detectChanges();
+
+      spyOn(component.reportHandler, 'updateLikeUnlikeReport');
+
+      // Act:
+      component.voteSelection({id, vote});
+
+      // Assert:      
+      expect(component.reportHandler.updateLikeUnlikeReport).toHaveBeenCalledWith(id, vote);
     });
   });
 });

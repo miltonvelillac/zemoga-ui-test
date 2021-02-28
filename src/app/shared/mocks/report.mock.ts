@@ -7,8 +7,8 @@ export const reportsMock: Report[] = [
     title: 'Kanye West',
     subTitle: '1 month ago in Entretaiment',
     description: 'Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero.',
-    like: 90,
-    unlike: 80
+    like: 10,
+    unlike: 12
   },
   {
     id: '456',
@@ -17,7 +17,7 @@ export const reportsMock: Report[] = [
     subTitle: '1 month ago in Business',
     description: 'Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero.',
     like: 90,
-    unlike: 120
+    unlike: 100
   },
   {
     id: '789',

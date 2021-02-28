@@ -64,16 +64,42 @@ describe('HomeContentComponentDeep', () => {
       const reports: Report[] = CloneDataInDeep.clone(reportsMock);
 
       spyOn(reportService, 'getAllReports').and.returnValue(of(reports));
-      
+
       // Act:
       fixture.detectChanges();
-      
+
       const cardReportComponentDirective = fixture.debugElement.queryAll(By.directive(CardReportComponent));
       const cardTitle = cardReportComponentDirective[1].nativeElement.querySelector('#cardTitle-1');
 
       // Assert:      
       expect(component.reports).toEqual(reports);
       expect(cardTitle.textContent).toContain(reports[1].title);
+    });
+  });
+
+  describe('#voteSelection', () => {
+    it(`When user selects a thumb option and clicks on vote button the selected option should be selected
+            to updateLikeUnlikeReport method in reportService in order to save it in a database`, () => {
+      // Arrange:
+      const reports: Report[] = CloneDataInDeep.clone(reportsMock);
+      const reportUpdated: Report = { ...reports[1], like: reports[1].like + 1 };
+
+      spyOn(reportService, 'updateLikeUnlikeReport').and.returnValue(of(reportUpdated));
+      spyOn(reportService, 'getAllReports').and.returnValue(of(reports));
+
+      // Act:
+      fixture.detectChanges();
+
+      const cardReportComponentDirective = fixture.debugElement.queryAll(By.directive(CardReportComponent));
+
+      const radioThumbUp: HTMLButtonElement = cardReportComponentDirective[1].nativeElement.querySelector('#radioThumbUp-1');
+      radioThumbUp.click();
+      
+      const voteBtn: HTMLButtonElement = cardReportComponentDirective[1].nativeElement.querySelector('#voteBtn-1');
+      voteBtn.click();
+
+      // Assert:      
+      expect(reportService.updateLikeUnlikeReport).toHaveBeenCalledWith(reportUpdated.id, 'up');
     });
   });
 });

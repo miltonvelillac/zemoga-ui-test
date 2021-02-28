@@ -47,8 +47,8 @@ export class HomeContentComponent implements OnInit, OnDestroy {
     return reportItem.id;
   }
 
-  voteSelection({id, vote}: {id: string, vote: CheckedThumbData}): void {
-this.reportHandler.updateLikeUnlikeReport(id, vote);
+  voteSelection({ id, vote }: { id: string, vote: CheckedThumbData }): void {
+    this.reportHandler.updateLikeUnlikeReport(id, vote);
   }
 
 }

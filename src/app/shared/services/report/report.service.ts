@@ -29,7 +29,7 @@ export class ReportService {
     let updatedReport: Report | undefined;
     const reportToUpdate = reports.map(report => {
       if (report.id === id) {
-        updatedReport = vote === 'up' ? {...report, like: report.like++} : {...report, unlike: report.unlike++};
+        updatedReport = vote === 'up' ? {...report, like: report.like + 1} : {...report, unlike: report.unlike + 1};
         return updatedReport;
       }
       return report;
