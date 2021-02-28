@@ -1,7 +1,8 @@
 <div class="card" style="background-image: url('assets/img/kanye-west.jpg')">
   <section class="card__content">
     <h2 class="card__content__title">
-      <span><img src="assets/icons/thumb-up-small.svg" /></span>
+      <img [src]="nameIcon" [id]="'cardImg-' + idIndex"/>
+      <span *ngIf="!nameIcon" class="card__content__title__space"></span>
       Kanye West
     </h2>
     <small class="card__content__sub-title">1 month ago in Entretaiment</small>

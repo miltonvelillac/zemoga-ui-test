@@ -18,6 +18,9 @@ $margin-content: 40px;
       font-size: 2.5rem;
       font-weight: 100;
       margin: 0;
+      &__space {
+        margin-left: $margin-content - 9px;
+      }
     }
     &__sub-title {
     }

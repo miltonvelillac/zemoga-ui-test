@@ -18,12 +18,12 @@ describe('CardVotesUiComponent', () => {
         VotesResultBarComponent
       ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CardVotesUiComponent);
-    component = fixture.componentInstance;    
+    component = fixture.componentInstance;
   });
 
   it('should create', () => {
@@ -36,11 +36,11 @@ describe('CardVotesUiComponent', () => {
       // Arrange:
       component.checkedThumb = 'down';
       fixture.detectChanges();
-      
+
       // Act:
       const radioThumbUp: HTMLElement = fixture.nativeElement.querySelector(`#radioThumbUp-0`);
       radioThumbUp.click();
-      
+
       // Assert:      
       expect(component.checkedThumb).toBe('up');
     });
@@ -49,11 +49,11 @@ describe('CardVotesUiComponent', () => {
       // Arrange:
       component.checkedThumb = 'up';
       fixture.detectChanges();
-      
+
       // Act:
       const radioThumbDown: HTMLElement = fixture.nativeElement.querySelector(`#radioThumbDown-0`);
       radioThumbDown.click();
-      
+
       // Assert:      
       expect(component.checkedThumb).toBe('down');
     });
@@ -65,33 +65,52 @@ describe('CardVotesUiComponent', () => {
       component.checkedThumb = 'down';
       component.voteAgain = false;
       fixture.detectChanges();
-      
+
       // Act:
       const voteBtn: HTMLElement = fixture.nativeElement.querySelector(`#voteBtn-0`);
       voteBtn.click();
       component.cdr.detectChanges();
 
       const thumbsRadio: HTMLElement = fixture.nativeElement.querySelector(`#thumbsRadio-0`);
-      
+      const cardImg = fixture.nativeElement.querySelector('#cardImg-0');
+
       // Assert:      
       expect(component.voteAgain).toBe(true);
       expect(thumbsRadio).toBeNull();
       expect(voteBtn.textContent).toContain('Vote again');
-      
+      expect(cardImg.src).toContain('thumb-down-small.svg');
+    });
+
+
+    it(`When user clicks on like and voteBtn is clicked then should show the thumb-up-small.svg`, () => {
+      // Arrange:
+      component.checkedThumb = 'up';
+      component.voteAgain = false;
+      fixture.detectChanges();
+
+      // Act:
+      const voteBtn: HTMLElement = fixture.nativeElement.querySelector(`#voteBtn-0`);
+      voteBtn.click();
+      component.cdr.detectChanges();
+
+      const cardImg = fixture.nativeElement.querySelector('#cardImg-0');
+
+      // Assert:
+      expect(cardImg.src).toContain('thumb-up-small.svg');
     });
 
     it(`When voteBtn is clicked and the user is not voting the text content button changes to Vote now and the thumbsRadio component appear again`, () => {
       // Arrange:
       component.voteAgain = true;
       fixture.detectChanges();
-      
+
       // Act:
       const voteBtn: HTMLElement = fixture.nativeElement.querySelector(`#voteBtn-0`);
       voteBtn.click();
       component.cdr.detectChanges();
 
-      const thumbsRadio: HTMLElement = fixture.nativeElement.querySelector(`#thumbsRadio-0`);      
-      
+      const thumbsRadio: HTMLElement = fixture.nativeElement.querySelector(`#thumbsRadio-0`);
+
       // Assert:      
       expect(component.voteAgain).toBe(false);
       expect(thumbsRadio).not.toBeNull();

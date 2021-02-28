@@ -12,6 +12,7 @@ export class CardVotesUiComponent implements OnInit {
   @Input() idIndex = 0;
 
   checkedThumb: CheckedThumbData = 'up';
+  nameIcon: string | undefined;
   voteAgain = false;
 
   constructor(
@@ -29,6 +30,11 @@ export class CardVotesUiComponent implements OnInit {
     this.voteAgain = !this.voteAgain;
     if (!this.voteAgain) { return; }
     console.log(this.checkedThumb);
+    this.setNameIcon();
+  }
+
+  setNameIcon(): void {
+    this.nameIcon = this.checkedThumb === 'up' ? 'assets/icons/thumb-up-small.svg' : 'assets/icons/thumb-down-small.svg';
   }
 
 }
