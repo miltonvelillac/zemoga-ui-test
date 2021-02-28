@@ -1,4 +1,4 @@
-$margin-content: 30px;
+$margin-content: 40px;
 
 .card {
   max-width: 493px;
@@ -23,7 +23,9 @@ $margin-content: 30px;
   
     }
     &__actions {
-      
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
     &__results {
       

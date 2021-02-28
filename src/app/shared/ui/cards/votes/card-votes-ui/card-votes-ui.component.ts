@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CheckedThumbData } from '../../../radio-btns/thumbs-radio/thumbs-radio.component';
 
 @Component({
   selector: 'app-card-votes-ui',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-votes-ui.component.scss']
 })
 export class CardVotesUiComponent implements OnInit {
+
+  checkedThumb: CheckedThumbData = 'up';
 
   constructor() { }
 
