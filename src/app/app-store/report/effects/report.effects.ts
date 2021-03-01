@@ -15,7 +15,7 @@ export class ReportEffects {
     ofType(ReportActions.getAllReports),
     exhaustMap(() => this.reportService.getAllReports().pipe(
       map((reports: Report[]) => ReportActions.getAllReportsSuccess({ reports })),
-      catchError(() => of(ReportActions.getAllReportsFail()))
+      catchError((error: any) => of(ReportActions.getAllReportsFail({error})))
     ))
   ));
 

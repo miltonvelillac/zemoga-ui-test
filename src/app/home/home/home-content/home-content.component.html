@@ -1,6 +1,9 @@
 <section class="content">
   <h1 class="content__title">Votes</h1>
   <div class="content__cards">
+    <ng-container *ngIf="getAllFail">
+      <app-error [error]="getAllFail" (retry)="askGetAllReports()"></app-error>
+    </ng-container>
     <div class="content__cards--loader" *ngIf="(reportHandler.loadingGetAllReports$ | async) else cardReports">
       <app-card-report [loading]="true"></app-card-report>
       <app-card-report [loading]="true"></app-card-report>

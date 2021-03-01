@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { ReportHandler } from 'src/app/app-store/report/handler/report.handler';
 import { reportsMock } from 'src/app/shared/mocks/report.mock';
+import { ErrorModel } from 'src/app/shared/models/error.model';
 import { Report } from 'src/app/shared/models/report.model';
 import { CheckedThumbData } from 'src/app/shared/ui/radio-btns/thumbs-radio/thumbs-radio.component';
 import { instance, mock } from 'ts-mockito';
@@ -29,6 +30,7 @@ describe('HomeContentComponent', () => {
 
   beforeEach(() => {
     component.reportHandler.getAllReports$ = of();
+    component.reportHandler.getAllReportsFail$ = of();
   });
 
   it('should create', () => {
@@ -78,6 +80,22 @@ describe('HomeContentComponent', () => {
 
       // Assert:      
       expect(component.reportHandler.updateLikeUnlikeReport).toHaveBeenCalledWith(id, vote);
+    });
+  });
+
+  describe('#getAllReportsFail', () => {
+    it(`When getAllReports fails should create getAllFail error`, () => {
+      // Arrange:
+      component.reportHandler.getAllReportsFail$ = of({error: undefined});
+      const expectedError: ErrorModel = { message: 'It was not possible to load the reports, please try again' };
+
+      fixture.detectChanges();
+
+      // Act:
+      component.getAllReportsFail();
+
+      // Assert:      
+      expect(component.getAllFail).toEqual(expectedError);
     });
   });
 });

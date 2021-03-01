@@ -4,6 +4,7 @@ import { Update } from '@ngrx/entity';
 import { provideMockStore } from '@ngrx/store/testing';
 import { of, ReplaySubject, throwError } from 'rxjs';
 import { reportsMock } from 'src/app/shared/mocks/report.mock';
+import { ErrorModel } from 'src/app/shared/models/error.model';
 import { Report } from 'src/app/shared/models/report.model';
 import { ReportService } from 'src/app/shared/services/report/report.service';
 import * as ReportActions from '../actions/report.action';
@@ -61,7 +62,7 @@ describe('ReportEffects', () => {
     it(`Should return a fail action called getAllReportsFail`, () => {
       // Arrange
       const action = ReportActions.getAllReports();
-      const actionFail: any = ReportActions.getAllReportsFail();
+      const actionFail: any = ReportActions.getAllReportsFail({error: undefined});
 
       let resp;
 

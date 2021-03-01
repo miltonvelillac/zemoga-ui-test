@@ -18,6 +18,8 @@ import { ThumbsRadioComponent } from 'src/app/shared/ui/radio-btns/thumbs-radio/
 import { VotesResultBarComponent } from 'src/app/shared/ui/statistics/votes-result-bar/votes-result-bar.component';
 import { CloneDataInDeep } from 'typescript-clone-data-in-deep';
 import { HomeContentComponent } from './home-content.component';
+import { ErrorModel } from 'src/app/shared/models/error.model';
+import { ErrorComponent } from 'src/app/shared/ui/error/error.component';
 
 
 describe('HomeContentComponentDeep', () => {
@@ -34,7 +36,8 @@ describe('HomeContentComponentDeep', () => {
         ThumbsRadioComponent,
         LightButtonComponent,
         VotesResultBarComponent,
-        SpinnerComponent
+        SpinnerComponent,
+        ErrorComponent
       ],
       providers: [
         ReportHandler,
@@ -143,6 +146,28 @@ describe('HomeContentComponentDeep', () => {
       expect(thumbsRadio).not.toBeNull();
       expect(cardImg.src).not.toContain('thumb-');
       expect(cardContentInfo.textContent).toContain(reportUpdated.description);
+    });
+  });
+
+  describe('#getAllReportsFail', () => {
+    it(`When getAllReports fails should create getAllFail error`, () => {
+      // Arrange:
+      spyOn(reportService, 'getAllReports').and.returnValue(throwError({error: undefined}));
+      spyOn(component.reportHandler, 'getAllReports');
+
+      component.reportHandler.getAllReportsFail$ = of({error: undefined});
+      const expectedError: ErrorModel = { message: 'It was not possible to load the reports, please try again' };
+
+      // Act:
+      fixture.detectChanges();
+
+      const errorMessage = fixture.nativeElement.querySelector('#errorMessage');
+      const errorRetryButton = fixture.nativeElement.querySelector('#errorRetryButton');
+      errorRetryButton.click();
+
+      // Assert:      
+      expect(errorMessage.textContent).toContain(expectedError.message);
+      expect(component.reportHandler.getAllReports).toHaveBeenCalledTimes(2);
     });
   });
 });

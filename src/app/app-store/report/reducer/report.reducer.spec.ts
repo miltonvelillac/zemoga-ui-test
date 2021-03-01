@@ -41,7 +41,7 @@ describe('ReportReducer', () => {
       // Arrange:
       const loadingGetAllReports = true;
       const currentState: ReporState = { ...reportInitialState, loadingGetAllReports };
-      const action = ReportActions.getAllReportsFail();
+      const action = ReportActions.getAllReportsFail({ error: undefined });
 
       // Act:
       const newState = reportReducer(currentState, action);
@@ -67,6 +67,22 @@ describe('ReportReducer', () => {
 
       // Assert:
       expect(newState.loadingUpdateLikeUnlikeReport).toEqual({id: '1', isLoading: true});
+    });
+
+    it(`Should change the loadingGetAllReports from true to false`, () => {
+      // Arrange:
+      const loadingGetAllReports = true;
+      const currentState: ReporState = {
+        ...reportInitialState,
+        loadingGetAllReports
+      };
+      const action = ReportActions.getAllReportsFail({ error: {message: 'error'} });
+
+      // Act:
+      const newState = reportReducer(currentState, action);
+
+      // Assert:
+      expect(newState.loadingGetAllReports).toEqual(false);
     });
   });
 

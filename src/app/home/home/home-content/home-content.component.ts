@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { filter, first, take } from 'rxjs/operators';
 import { ReportHandler } from 'src/app/app-store/report/handler/report.handler';
+import { ErrorModel } from 'src/app/shared/models/error.model';
 import { Report } from 'src/app/shared/models/report.model';
 import { CheckedThumbData } from 'src/app/shared/ui/radio-btns/thumbs-radio/thumbs-radio.component';
 import { SubCollection } from 'src/app/shared/utils/rx/sub-collection';
@@ -14,6 +15,7 @@ import { SubCollection } from 'src/app/shared/utils/rx/sub-collection';
 export class HomeContentComponent implements OnInit, OnDestroy {
 
   reports: Report[] = [];
+  getAllFail: ErrorModel | undefined;
 
   subs = new SubCollection();
 
@@ -25,6 +27,7 @@ export class HomeContentComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.askGetAllReports();
     this.getAllReports();
+    this.getAllReportsFail();
   }
 
   ngOnDestroy(): void {
@@ -32,6 +35,7 @@ export class HomeContentComponent implements OnInit, OnDestroy {
   }
 
   askGetAllReports() {
+    this.getAllFail = undefined;
     this.reportHandler.getAllReports();
   }
 
@@ -44,6 +48,12 @@ export class HomeContentComponent implements OnInit, OnDestroy {
         this.reports = reports;
         this.cdr.detectChanges();
       }
+    );
+  }
+
+  getAllReportsFail(): void {
+    this.subs.add = this.reportHandler.getAllReportsFail$.subscribe(
+      () => this.getAllFail = { message: 'It was not possible to load the reports, please try again' }
     );
   }
 
