@@ -25,8 +25,8 @@ export const reportsMock: Report[] = [
     title: 'Cristina Fernández de Kirchner',
     subTitle: '1 month ago in Politics',
     description: 'Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero.',
-    like: 90,
-    unlike: 320
+    like: 25,
+    unlike: 0
   },
   {
     id: '012',
@@ -34,7 +34,7 @@ export const reportsMock: Report[] = [
     title: 'Malala Yousafzai',
     subTitle: '1 month ago in Entretainment',
     description: 'Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero.',
-    like: 900,
-    unlike: 120
+    like: 10,
+    unlike: 1
   }
 ];

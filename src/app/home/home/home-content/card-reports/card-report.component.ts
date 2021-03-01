@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { Observable, of } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { ReportHandler } from 'src/app/app-store/report/handler/report.handler';
 import { Report } from 'src/app/shared/models/report.model';
@@ -16,6 +15,7 @@ export class CardReportComponent implements OnInit, OnDestroy {
 
   @Input() idIndex = 0;
   @Input() report: Report | undefined;
+  @Input() loading = false;
 
   @Output() voteSelection = new EventEmitter<{ id: string, vote: CheckedThumbData }>();
 

@@ -2,9 +2,15 @@
 
 $margin-content: 40px;
 $max-width-card: 493px;
+$card-width: 100vw;
+
+.loading {
+  width: $card-width;
+  max-width: $max-width-card;
+}
 
 .card {  
-  width: 100vw;
+  width: $card-width;
   max-width: $max-width-card;
   min-height: 550px;
   box-shadow: 1px 1px 5px 1px rgb(232 232 232);

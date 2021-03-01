@@ -1,16 +1,20 @@
-<div *ngIf="report" class="card" [ngStyle]="{'background-image': getBackgroundImage()}">
+<div
+  *ngIf="report"
+  class="card"
+  [ngStyle]="{ 'background-image': getBackgroundImage() }"
+>
   <section class="card__content">
     <div class="card__content__title">
       <div class="card__content__title__icon">
-        <img [src]="nameIcon" [id]="'cardImg-' + idIndex"/>
+        <img [src]="nameIcon" [id]="'cardImg-' + idIndex" />
       </div>
       <h2 class="card__content__title__text" [id]="'cardTitle-' + idIndex">
-        {{report.title}}
+        {{ report.title }}
       </h2>
     </div>
-    <small class="card__content__sub-title">{{report?.subTitle}}</small>
+    <small class="card__content__sub-title">{{ report?.subTitle }}</small>
     <p class="card__content__info" [id]="'cardContentInfo-' + idIndex">
-      {{getTextInfo()}}
+      {{ getTextInfo() }}
     </p>
     <div class="card__content__actions">
       <ng-container *ngIf="voteButtonIsLoading; else actions">
@@ -42,4 +46,17 @@
       [unLikeQuantity]="report.unlike"
     ></app-votes-result-bar>
   </div>
+</div>
+
+<div class="loading" *ngIf="loading">
+  <ngx-skeleton-loader
+    count="1"
+    appearance="circle"
+    [theme]="{
+      width: '100%',
+      height: '500px',
+      'border-radius': '5px'
+    }"
+  >
+  </ngx-skeleton-loader>
 </div>

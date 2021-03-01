@@ -1,5 +1,6 @@
 @import "mixins";
 
+$spaceBetweenCards: 50px;
 .content {
   display: flex;
   flex-direction: column;
@@ -19,6 +20,13 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 50px;
+    gap: $spaceBetweenCards;
+
+    &--loader {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: $spaceBetweenCards;
+    }
   }
 }
