@@ -5,6 +5,7 @@ import { ThumbsRadioComponent } from './ui/radio-btns/thumbs-radio/thumbs-radio.
 import { VotesResultBarComponent } from './ui/statistics/votes-result-bar/votes-result-bar.component';
 import { SpinnerComponent } from './ui/loaders/spinner/spinner.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { ErrorComponent } from './ui/error/error.component';
 
 
 
@@ -13,7 +14,8 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     LightButtonComponent,
     ThumbsRadioComponent,
     VotesResultBarComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ErrorComponent
   ],
   imports: [
     CommonModule
@@ -23,6 +25,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     ThumbsRadioComponent,
     VotesResultBarComponent,
     SpinnerComponent,
+    ErrorComponent,
     NgxSkeletonLoaderModule
   ]
 })
