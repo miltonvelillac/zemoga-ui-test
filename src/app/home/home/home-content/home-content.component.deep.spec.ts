@@ -13,6 +13,7 @@ import { Report } from 'src/app/shared/models/report.model';
 import { ReportService } from 'src/app/shared/services/report/report.service';
 import { LightButtonComponent } from 'src/app/shared/ui/buttons/light-button/light-button.component';
 import { CardReportComponent } from 'src/app/shared/ui/cards/report/card-reports/card-report.component';
+import { SpinnerComponent } from 'src/app/shared/ui/loaders/spinner/spinner.component';
 import { ThumbsRadioComponent } from 'src/app/shared/ui/radio-btns/thumbs-radio/thumbs-radio.component';
 import { VotesResultBarComponent } from 'src/app/shared/ui/statistics/votes-result-bar/votes-result-bar.component';
 import { CloneDataInDeep } from 'typescript-clone-data-in-deep';
@@ -32,7 +33,8 @@ describe('HomeContentComponentDeep', () => {
         CardReportComponent,
         ThumbsRadioComponent,
         LightButtonComponent,
-        VotesResultBarComponent
+        VotesResultBarComponent,
+        SpinnerComponent
       ],
       providers: [
         ReportHandler,
@@ -78,7 +80,7 @@ describe('HomeContentComponentDeep', () => {
   });
 
   describe('#voteSelection', () => {
-    it(`When user selects a thumb option and clicks on vote button the selected option should be selected
+    fit(`When user selects a thumb option and clicks on vote button the selected option should be selected
             to updateLikeUnlikeReport method in reportService in order to save it in a database`, () => {
       // Arrange:
       const reports: Report[] = CloneDataInDeep.clone(reportsMock);

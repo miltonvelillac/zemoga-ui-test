@@ -46,7 +46,7 @@ describe('ReportSelectors', () => {
       // Arrange
       const appState = {
         reports: {
-          loadingUpdateLikeUnlikeReport: true
+          loadingUpdateLikeUnlikeReport: {id: '1', isLoading: true}
         }
       };
 
@@ -54,7 +54,7 @@ describe('ReportSelectors', () => {
       const result = ReportSelectors.selectLoadingUpdateLikeUnlikeReport(appState);
 
       // Assert
-      expect(result).toBe(true);
+      expect(result).toEqual({id: '1', isLoading: true});
     });
   });
 

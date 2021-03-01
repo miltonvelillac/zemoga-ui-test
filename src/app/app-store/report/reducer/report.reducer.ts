@@ -18,17 +18,17 @@ export const reportReducer = createReducer(
     ...state,
     loadingGetAllReports: false
   })),
-  on(ReportActions.updateLikeUnlikeReport, (state) => ({
+  on(ReportActions.updateLikeUnlikeReport, (state, { id }) => ({
     ...state,
-    loadingUpdateLikeUnlikeReport: true
+    loadingUpdateLikeUnlikeReport: { id, isLoading: true }
   })),
-  on(ReportActions.updateLikeUnlikeReportSuccess, (state, { report }) => {
-    const newState = { ...state, loadingUpdateLikeUnlikeReport: false };
+  on(ReportActions.updateLikeUnlikeReportSuccess, (state, { id, report }) => {
+    const newState = { ...state, loadingUpdateLikeUnlikeReport: { id ,isLoading: false} };
     return report ? reportAdapter.updateOne(report, newState) : newState
   }),
-  on(ReportActions.updateLikeUnlikeReportFail, (state) => ({
+  on(ReportActions.updateLikeUnlikeReportFail, (state, { id }) => ({
     ...state,
-    loadingUpdateLikeUnlikeReport: false
+    loadingUpdateLikeUnlikeReport: { id, isLoading: false }
   }))
 );
 

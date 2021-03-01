@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { reportsMock } from 'src/app/shared/mocks/report.mock';
 import { CloneDataInDeep } from 'typescript-clone-data-in-deep';
 import { LightButtonComponent } from '../../../buttons/light-button/light-button.component';
+import { SpinnerComponent } from '../../../loaders/spinner/spinner.component';
 import { ThumbsRadioComponent } from '../../../radio-btns/thumbs-radio/thumbs-radio.component';
 import { VotesResultBarComponent } from '../../../statistics/votes-result-bar/votes-result-bar.component';
 
@@ -17,7 +18,8 @@ describe('CardReportComponent', () => {
         CardReportComponent,
         ThumbsRadioComponent,
         LightButtonComponent,
-        VotesResultBarComponent
+        VotesResultBarComponent,
+        SpinnerComponent
       ]
     })
       .compileComponents();

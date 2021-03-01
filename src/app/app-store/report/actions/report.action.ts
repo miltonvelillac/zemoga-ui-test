@@ -8,5 +8,5 @@ export const getAllReportsSuccess = createAction('[Reports] Get All Reports Succ
 export const getAllReportsFail = createAction('[Reports] Get All Reports Fail');
 
 export const updateLikeUnlikeReport = createAction('[Reports] Update like or unlike Reports', props<{ id: string, vote: CheckedThumbData }>());
-export const updateLikeUnlikeReportSuccess = createAction('[Reports] Update like or unlike Reports Success', props<{ report: Update<Report> | undefined }>());
-export const updateLikeUnlikeReportFail = createAction('[Reports] Update like or unlike Reports Fail');
+export const updateLikeUnlikeReportSuccess = createAction('[Reports] Update like or unlike Reports Success', props<{ id: string, report: Update<Report> | undefined }>());
+export const updateLikeUnlikeReportFail = createAction('[Reports] Update like or unlike Reports Fail', props<{ id: string }>());

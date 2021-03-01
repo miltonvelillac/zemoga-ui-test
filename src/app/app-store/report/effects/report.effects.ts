@@ -23,8 +23,8 @@ export class ReportEffects {
     ofType(ReportActions.updateLikeUnlikeReport),
     exhaustMap(({id, vote}) => this.reportService.updateLikeUnlikeReport(id, vote).pipe(
       map((report: Report | undefined) => report ? {id: report.id, changes: report} : undefined),
-      map((report: Update<Report> | undefined) => ReportActions.updateLikeUnlikeReportSuccess({ report })),
-      catchError(() => of(ReportActions.updateLikeUnlikeReportFail()))
+      map((report: Update<Report> | undefined) => ReportActions.updateLikeUnlikeReportSuccess({ id, report })),
+      catchError(() => of(ReportActions.updateLikeUnlikeReportFail({id})))
     ))
   ));
 

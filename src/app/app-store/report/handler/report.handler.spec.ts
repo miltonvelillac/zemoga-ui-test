@@ -107,18 +107,23 @@ describe('ReportHandler', () => {
       const state = {
         reports: {
           ...reportInitialState,
-          loadingUpdateLikeUnlikeReport: true
+          loadingUpdateLikeUnlikeReport: {id: '123', isLoading: true}
         }
       };
       mockStore.setState(state);
 
       let loadingValue = false;
+      let idValue = '';
 
       // Act:
-      handler.loadingUpdateLikeUnlikeReport$.subscribe((loading: boolean) => loadingValue = loading);
+      handler.loadingUpdateLikeUnlikeReport$.subscribe(({id, isLoading}) => {
+        loadingValue = isLoading;
+        idValue = id;
+      });
 
       // Assert:
       expect(loadingValue).toBe(true);
+      expect(idValue).toBe('123');
     });
     
   });

@@ -55,7 +55,7 @@ describe('ReportReducer', () => {
   describe('#UpdateLikeUnlikeReport', () => {
     it(`Should change the loadingUpdateLikeUnlikeReport from false to true`, () => {
       // Arrange:
-      const loadingUpdateLikeUnlikeReport = false;
+      const loadingUpdateLikeUnlikeReport = {id: '', isLoading: false};
       const currentState: ReporState = {
         ...reportInitialState,
         loadingUpdateLikeUnlikeReport
@@ -66,7 +66,7 @@ describe('ReportReducer', () => {
       const newState = reportReducer(currentState, action);
 
       // Assert:
-      expect(newState.loadingUpdateLikeUnlikeReport).toBe(true);
+      expect(newState.loadingUpdateLikeUnlikeReport).toEqual({id: '1', isLoading: true});
     });
   });
 
@@ -78,37 +78,37 @@ describe('ReportReducer', () => {
     const updatedReport: Update<Report> = { id: report.id, changes: { ...report, like } };
     const expectedReport: Report = { ...report, like };
 
-    const loadingUpdateLikeUnlikeReport = true;
+    const loadingUpdateLikeUnlikeReport = {id: '1', isLoading: true};
     const currentState: ReporState = {
       ...reportInitialState,
       loadingUpdateLikeUnlikeReport,
       entities: { [reports[0].id]: reports[0], [reports[1].id]: reports[1] },
       ids: [reports[0].id, reports[1].id]
     };
-    const action = ReportActions.updateLikeUnlikeReportSuccess({ report: updatedReport });
+    const action = ReportActions.updateLikeUnlikeReportSuccess({ id: '1', report: updatedReport });
 
     // Act:
     const newState = reportReducer(currentState, action);
 
     // Assert:
-    expect(newState.loadingUpdateLikeUnlikeReport).toBe(false);
+    expect(newState.loadingUpdateLikeUnlikeReport).toEqual({id: '1', isLoading: false});
     expect(newState.entities[reports[0].id]).toEqual(expectedReport);
   });
 
   it(`Should change the loadingUpdateLikeUnlikeReport from true to false when the action fails`, () => {
     // Arrange:
-    const loadingUpdateLikeUnlikeReport = true;
+    const loadingUpdateLikeUnlikeReport = {id: '1', isLoading: true};
     const currentState: ReporState = {
       ...reportInitialState,
       loadingUpdateLikeUnlikeReport
     };
-    const action = ReportActions.updateLikeUnlikeReportFail();
+    const action = ReportActions.updateLikeUnlikeReportFail({id: '1'});
 
     // Act:
     const newState = reportReducer(currentState, action);
 
     // Assert:
-    expect(newState.loadingUpdateLikeUnlikeReport).toBe(false);
+    expect(newState.loadingUpdateLikeUnlikeReport).toEqual({id: '1', isLoading: false});
   });
 
 });

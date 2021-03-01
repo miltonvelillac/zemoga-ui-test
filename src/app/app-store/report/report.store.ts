@@ -9,12 +9,12 @@ export const reportAdapter: EntityAdapter<Report> = createEntityAdapter<Report>(
 
 export interface ReporState extends EntityState<Report> {
   loadingGetAllReports: boolean;
-  loadingUpdateLikeUnlikeReport: boolean;
+  loadingUpdateLikeUnlikeReport: {id: string, isLoading: boolean};
 }
 
 export const reportInitialState: ReporState = reportAdapter.getInitialState({
   loadingGetAllReports: false,
-  loadingUpdateLikeUnlikeReport: false
+  loadingUpdateLikeUnlikeReport: {id: '', isLoading: false}
 });
 
 export const reportFeatureKey = 'reports';

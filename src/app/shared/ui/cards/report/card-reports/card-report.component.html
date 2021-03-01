@@ -13,20 +13,25 @@
       {{getTextInfo()}}
     </p>
     <div class="card__content__actions">
-      <app-thumbs-radio
-        *ngIf="!voteAgain"
-        [id]="'thumbsRadio-' + idIndex"
-        [idThumbUp]="'radioThumbUp-' + idIndex"
-        [idThumbDown]="'radioThumbDown-' + idIndex"
-        [nameThumb]="'radioThumb-' + idIndex"
-        [checkedThumb]="checkedThumb"
-        (thumbSelected)="thumbSelected($event)"
-      ></app-thumbs-radio>
-      <app-light-button
-        [idButton]="'voteBtn-' + idIndex"
-        [text]="voteAgain ? 'Vote again' : 'Vote now'"
-        (click)="vote()"
-      ></app-light-button>
+      <ng-container *ngIf="voteButtonIsLoading; else actions">
+        <app-spinner></app-spinner>
+      </ng-container>
+      <ng-template #actions>
+        <app-thumbs-radio
+          *ngIf="!voteAgain"
+          [id]="'thumbsRadio-' + idIndex"
+          [idThumbUp]="'radioThumbUp-' + idIndex"
+          [idThumbDown]="'radioThumbDown-' + idIndex"
+          [nameThumb]="'radioThumb-' + idIndex"
+          [checkedThumb]="checkedThumb"
+          (thumbSelected)="thumbSelected($event)"
+        ></app-thumbs-radio>
+        <app-light-button
+          [idButton]="'voteBtn-' + idIndex"
+          [text]="voteAgain ? 'Vote again' : 'Vote now'"
+          (click)="vote()"
+        ></app-light-button>
+      </ng-template>
     </div>
   </section>
   <div class="card__results">
