@@ -3,8 +3,6 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LayoutComponent } from './components/layout/layout.component';
 
-
-
 @NgModule({
   declarations: [
     LayoutComponent
