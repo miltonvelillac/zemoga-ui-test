@@ -3,7 +3,7 @@
 # Styles and UI
 * I didn't use a UI framework like Angular material or bootstrap because I want to show you my skills with scss, but I have had the opportunity to work with the two frameworks mentioned and I consider that I have good experience with both.
 * I used BEM in order to design the css classes.
-* With a little more time I would have used the icons with classes and not directly in an image tag, in order to generate the classes I would have used icomoon.io.
+* With a little more time I would have used the icons with classes or base64 not directly in an image tag, in order to generate the classes I would have used icomoon.io.
 
 # REDUX
 * This is just one screen but I wanted to use redux in order to show you that I now how to use it.
