@@ -4,7 +4,7 @@ import { filter } from 'rxjs/operators';
 import { ReportHandler } from 'src/app/app-store/report/handler/report.handler';
 import { Report } from 'src/app/shared/models/report.model';
 import { SubCollection } from 'src/app/shared/utils/rx/sub-collection';
-import { CheckedThumbData } from '../../../radio-btns/thumbs-radio/thumbs-radio.component';
+import { CheckedThumbData } from '../../../../shared/ui/radio-btns/thumbs-radio/thumbs-radio.component';
 
 @Component({
   selector: 'app-card-report',

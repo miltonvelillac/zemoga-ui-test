@@ -12,6 +12,7 @@ import { ReportEffects } from '../app-store/report/effects/report.effects';
 import { StoreModule } from '@ngrx/store';
 import { reportFeatureKey } from '../app-store/report/report.store';
 import { reportReducer } from '../app-store/report/reducer/report.reducer';
+import { CardReportComponent } from './home/home-content/card-reports/card-report.component';
 
 
 
@@ -22,6 +23,7 @@ import { reportReducer } from '../app-store/report/reducer/report.reducer';
     HomeInfoComponent,
     HomeContentComponent,
     HomeContactComponent,
+    CardReportComponent
   ],
   imports: [
     CommonModule,

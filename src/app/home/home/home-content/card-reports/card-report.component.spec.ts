@@ -4,10 +4,10 @@ import { ReportHandler } from 'src/app/app-store/report/handler/report.handler';
 import { reportsMock } from 'src/app/shared/mocks/report.mock';
 import { instance, mock } from 'ts-mockito';
 import { CloneDataInDeep } from 'typescript-clone-data-in-deep';
-import { LightButtonComponent } from '../../../buttons/light-button/light-button.component';
-import { SpinnerComponent } from '../../../loaders/spinner/spinner.component';
-import { ThumbsRadioComponent } from '../../../radio-btns/thumbs-radio/thumbs-radio.component';
-import { VotesResultBarComponent } from '../../../statistics/votes-result-bar/votes-result-bar.component';
+import { LightButtonComponent } from '../../../../shared/ui/buttons/light-button/light-button.component';
+import { SpinnerComponent } from '../../../../shared/ui/loaders/spinner/spinner.component';
+import { ThumbsRadioComponent } from '../../../../shared/ui/radio-btns/thumbs-radio/thumbs-radio.component';
+import { VotesResultBarComponent } from '../../../../shared/ui/statistics/votes-result-bar/votes-result-bar.component';
 
 import { CardReportComponent } from './card-report.component';
 

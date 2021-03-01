@@ -12,7 +12,7 @@ import { reportsMock } from 'src/app/shared/mocks/report.mock';
 import { Report } from 'src/app/shared/models/report.model';
 import { ReportService } from 'src/app/shared/services/report/report.service';
 import { LightButtonComponent } from 'src/app/shared/ui/buttons/light-button/light-button.component';
-import { CardReportComponent } from 'src/app/shared/ui/cards/report/card-reports/card-report.component';
+import { CardReportComponent } from 'src/app/home/home/home-content/card-reports/card-report.component';
 import { SpinnerComponent } from 'src/app/shared/ui/loaders/spinner/spinner.component';
 import { ThumbsRadioComponent } from 'src/app/shared/ui/radio-btns/thumbs-radio/thumbs-radio.component';
 import { VotesResultBarComponent } from 'src/app/shared/ui/statistics/votes-result-bar/votes-result-bar.component';
