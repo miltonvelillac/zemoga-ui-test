@@ -7,6 +7,7 @@ import { SpinnerComponent } from './ui/loaders/spinner/spinner.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ErrorComponent } from './ui/error/error.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { InfoCardComponent } from './ui/cards/info-card/info-card.component';
 
 
 
@@ -17,7 +18,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     VotesResultBarComponent,
     SpinnerComponent,
     ErrorComponent,    
-    NavBarComponent
+    NavBarComponent,
+    InfoCardComponent
   ],
   imports: [
     CommonModule
@@ -29,7 +31,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     SpinnerComponent,
     ErrorComponent,
     NgxSkeletonLoaderModule,    
-    NavBarComponent
+    NavBarComponent,
+    InfoCardComponent
   ]
 })
 export class SharedModule { }

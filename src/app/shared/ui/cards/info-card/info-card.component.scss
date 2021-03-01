@@ -1,0 +1,30 @@
+.info-card {
+  max-width: 435px;
+  color: #fff;
+  backdrop-filter: blur(14px);
+  background-color: rgba(130, 130, 130, 0.5);
+  font-size: 1.2rem;  
+  &__content {
+    padding: 30px 30px 30px 30px;
+    &__title {
+      &__text {
+        margin: 0;
+        font-size: 3rem;
+      }
+    }
+    &__description {
+    }
+    &__reference {
+      text-decoration: underline;
+      cursor: pointer;
+      display: flex;
+      gap: 5px;
+    }
+    &__vote {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__actions {
+  }
+}

@@ -1,24 +1,59 @@
-.radio-btns__element__item { 
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.radio-btns__element__item + img {
-  cursor: pointer;
-}
-
-.radio-btns__element__item:checked + img {
-  outline: 2px solid #fff;
-}
-
 .radio-btns {
   display: flex;
   gap: 10px;
   &__element {
     &:hover {
       opacity: 70%;
+    }
+    &__item { 
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      & + img {
+        cursor: pointer;
+      }
+    
+      &:checked + img {
+        outline: 2px solid #fff;
+      }
+    }
+  }
+}
+
+:host-context(.big) .radio-btns {
+  gap: 0;
+  height: 50px;
+  &__element {
+    width: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &__item {
+      & + img {
+        opacity: 60%;        
+      }
+      &:checked + img {
+        outline: none;
+        opacity: 100%;
+      }
+      
+    }
+    
+    &--like {
+      background: var(--soft-color);
+      &__image {
+        content:url("../../../../../assets/icons/thumb-up.svg");
+      }
+    }
+
+    &--dislike {
+      background: var(--strong-color);
+      &__image {
+        content:url("../../../../../assets/icons/thumb-down.svg");
+      }
     }
   }
 }

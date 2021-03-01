@@ -1,5 +1,5 @@
 <div class="radio-btns">
-  <label [id]="idThumbUp" class="radio-btns__element">
+  <label [id]="idThumbUp" class="radio-btns__element radio-btns__element--like">
     <input
       type="radio"
       [name]="nameThumb"
@@ -8,10 +8,10 @@
       (change)="changeThumbSelected(checkedThumbUp)"
       [checked]="checkedThumb === checkedThumbUp"
     />
-    <img src="assets/icons/thumb-up-small.svg" />
+    <img src="assets/icons/thumb-up-small.svg" class="radio-btns__element--like__image"/>
   </label>
 
-  <label [id]="idThumbDown" class="radio-btns__element">
+  <label [id]="idThumbDown" class="radio-btns__element radio-btns__element--dislike">
     <input
       type="radio"
       [name]="nameThumb"
@@ -20,6 +20,6 @@
       (change)="changeThumbSelected(checkedThumbDown)"
       [checked]="checkedThumb === checkedThumbDown"
     />
-    <img src="assets/icons/thumb-down-small.svg" />
+    <img src="assets/icons/thumb-down-small.svg" class="radio-btns__element--dislike__image"/>
   </label>
 </div>
