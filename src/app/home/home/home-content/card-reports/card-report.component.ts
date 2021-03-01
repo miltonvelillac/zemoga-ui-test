@@ -75,11 +75,15 @@ export class CardReportComponent implements OnInit, OnDestroy {
 
   successUpdateLikeUnlikeReport(): void {
     this.subs.add = this.reportHandler.successUpdateLikeUnlikeReport$.pipe(
-      filter((id: string) => this.report?.id === id)
+      filter(({id}) => this.report?.id === id)
     ).subscribe(
-      () => {
+      ({reportChanges}) => {
+        if (this.report && reportChanges) {
+          this.report = {...this.report, ...reportChanges};
+        }
         this.voteAgain = true;
         this.setNameIcon();
+        this.cdr.detectChanges();
       }
     );
   }

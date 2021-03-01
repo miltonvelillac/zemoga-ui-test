@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { AppStoreModule } from 'src/app/app-store/app-store.module';
 import { ReportEffects } from 'src/app/app-store/report/effects/report.effects';
 import { ReportHandler } from 'src/app/app-store/report/handler/report.handler';
@@ -111,6 +111,38 @@ describe('HomeContentComponentDeep', () => {
       expect(thumbsRadio).toBeNull();
       expect(cardImg.src).toContain('thumb-up-small.svg');
       expect(cardContentInfo.textContent).toContain('Thank you for voting!');
-    });    
+    });   
+    
+    it(`When user selects a thumb option and clicks on vote button the selected option and service fails`, () => {
+      // Arrange:
+      const reports: Report[] = CloneDataInDeep.clone(reportsMock);
+      const reportUpdated: Report = { ...reports[1], like: reports[1].like + 1 };
+
+      spyOn(reportService, 'updateLikeUnlikeReport').and.returnValue(throwError(undefined));
+      spyOn(reportService, 'getAllReports').and.returnValue(of(reports));
+
+      // Act:
+      fixture.detectChanges();
+
+      const cardReportComponentDirective = fixture.debugElement.queryAll(By.directive(CardReportComponent));
+
+      const radioThumbUp: HTMLButtonElement = cardReportComponentDirective[1].nativeElement.querySelector('#radioThumbUp-1');
+      radioThumbUp.click();
+      
+      const voteBtn: HTMLButtonElement = cardReportComponentDirective[1].nativeElement.querySelector('#voteBtn-1');
+      voteBtn.click();
+      
+      component.cdr.detectChanges();
+
+      const thumbsRadio: HTMLElement = cardReportComponentDirective[1].nativeElement.querySelector(`#thumbsRadio-1`);
+      const cardImg = cardReportComponentDirective[1].nativeElement.querySelector('#cardImg-1');
+      const cardContentInfo = cardReportComponentDirective[1].nativeElement.querySelector('#cardContentInfo-1');
+
+      // Assert:      
+      expect(reportService.updateLikeUnlikeReport).toHaveBeenCalledWith(reportUpdated.id, 'up');
+      expect(thumbsRadio).not.toBeNull();
+      expect(cardImg.src).not.toContain('thumb-');
+      expect(cardContentInfo.textContent).toContain(reportUpdated.description);
+    });
   });
 });

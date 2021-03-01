@@ -15,7 +15,7 @@ export class ReportHandler {
   loadingGetAllReports$ = this.store$.pipe(select(ReportSelectors.selectLoadingGetAllReports));
   loadingUpdateLikeUnlikeReport$ = this.store$.pipe(select(ReportSelectors.selectLoadingUpdateLikeUnlikeReport));
 
-  successUpdateLikeUnlikeReport$ = this.actions$.pipe(ofType(ReportActions.updateLikeUnlikeReport), map(action => action.id));
+  successUpdateLikeUnlikeReport$ = this.actions$.pipe(ofType(ReportActions.updateLikeUnlikeReportSuccess), map(action => ({id: action.id, reportChanges: action.report?.changes})));
 
   constructor(public actions$: Actions, public store$: Store) { }
 

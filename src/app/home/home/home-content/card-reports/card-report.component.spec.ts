@@ -128,7 +128,7 @@ describe('CardReportComponent', () => {
       // Arrange:
       const id = '123';
       component.report = { ...reportsMock[0], id };
-      component.reportHandler.successUpdateLikeUnlikeReport$ = of(id);
+      component.reportHandler.successUpdateLikeUnlikeReport$ = of({id, reportChanges: {like: 10}});
       component.voteAgain = false;
       component.checkedThumb = 'up';
 
