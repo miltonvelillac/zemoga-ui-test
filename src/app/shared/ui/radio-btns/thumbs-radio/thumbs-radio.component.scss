@@ -33,7 +33,7 @@
     
     &__item {
       & + img {
-        opacity: 60%;        
+        opacity: 60%;
       }
       &:checked + img {
         outline: none;

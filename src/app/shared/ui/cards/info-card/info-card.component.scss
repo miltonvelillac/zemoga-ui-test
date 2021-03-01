@@ -1,15 +1,17 @@
+@import "mixins";
+
 .info-card {
   max-width: 435px;
   color: #fff;
   backdrop-filter: blur(14px);
   background-color: rgba(130, 130, 130, 0.5);
-  font-size: 1.2rem;  
+  font-size: 1rem;  
   &__content {
-    padding: 30px 30px 30px 30px;
+    padding: 10px;
     &__title {
       &__text {
         margin: 0;
-        font-size: 3rem;
+        font-size: 2rem;
       }
     }
     &__description {
@@ -21,10 +23,25 @@
       gap: 5px;
     }
     &__vote {
-      margin-bottom: 20px;
+      margin-bottom: 0px;
     }
   }
 
   &__actions {
+  }
+
+  @include mq-up(sm) {
+    &__content {
+      font-size: 1.2rem;
+      padding: 30px;
+      &__title {
+        &__text {
+          font-size: 3rem;
+        }
+      }
+      &__vote {
+        margin-bottom: 20px;
+      }
+    }
   }
 }

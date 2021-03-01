@@ -1,18 +1,30 @@
 @import "mixins";
 
 .main-header {
+  display: flex;
+  flex-direction: column;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vw;
-  max-height: 700px;
-  min-height: 550px;
+  height: 650px;  
+
+  &__info-bar {
+    margin-top: auto;
+  }
+
+  @include mq-up(sm) {
+    height: 100vw;
+    max-height: 700px;
+    min-height: 550px;
+
+    &__info-bar {
+      display: flex;
+    }
+  }
 
   @include mq-up(lg) {
     background-position: initial;
-  }
 
-  &__info-card {
-    @include mq-up(lg) {
+    &__info-card {
       padding-left: 135px;
     }
   }
