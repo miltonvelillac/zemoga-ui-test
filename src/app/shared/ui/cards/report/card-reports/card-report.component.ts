@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { filter } from 'rxjs/operators';
+import { ReportHandler } from 'src/app/app-store/report/handler/report.handler';
 import { Report } from 'src/app/shared/models/report.model';
 import { SubCollection } from 'src/app/shared/utils/rx/sub-collection';
 import { CheckedThumbData } from '../../../radio-btns/thumbs-radio/thumbs-radio.component';
@@ -14,7 +16,6 @@ export class CardReportComponent implements OnInit, OnDestroy {
 
   @Input() idIndex = 0;
   @Input() report: Report | undefined;
-  @Input() loadingUpdateLikeUnlikeReport$: Observable<{id: string, isLoading: boolean}> = of({id: '', isLoading: false});
 
   @Output() voteSelection = new EventEmitter<{ id: string, vote: CheckedThumbData }>();
 
@@ -26,11 +27,13 @@ export class CardReportComponent implements OnInit, OnDestroy {
   voteButtonIsLoading = false;
 
   constructor(
-    public cdr: ChangeDetectorRef
+    public cdr: ChangeDetectorRef,
+    public reportHandler: ReportHandler
   ) { }
 
   ngOnInit(): void {
     this.updateLikeUnlikeActionIsLoading();
+    this.successUpdateLikeUnlikeReport();
   }
 
   ngOnDestroy(): void {
@@ -41,12 +44,12 @@ export class CardReportComponent implements OnInit, OnDestroy {
     this.checkedThumb = selected;
   }
 
-  vote(): void {
-    this.voteAgain = !this.voteAgain;
-    if (!this.voteAgain) { return; }
-    console.log(this.checkedThumb);
+  vote(): void {    
+    if (this.voteAgain) {
+      this.voteAgain = !this.voteAgain;
+      return;
+    }
     this.voteSelection.emit({ id: this.report?.id || '', vote: this.checkedThumb });
-    this.setNameIcon();
   }
 
   setNameIcon(): void {
@@ -62,10 +65,21 @@ export class CardReportComponent implements OnInit, OnDestroy {
   }
 
   updateLikeUnlikeActionIsLoading(): void {
-    this.subs.add = this.loadingUpdateLikeUnlikeReport$.subscribe(
+    this.subs.add = this.reportHandler.loadingUpdateLikeUnlikeReport$.subscribe(
       (isLoadingData) => {
         this.voteButtonIsLoading = isLoadingData.isLoading && isLoadingData.id === this.report?.id;
         this.cdr.detectChanges();
+      }
+    );
+  }
+
+  successUpdateLikeUnlikeReport(): void {
+    this.subs.add = this.reportHandler.successUpdateLikeUnlikeReport$.pipe(
+      filter((id: string) => this.report?.id === id)
+    ).subscribe(
+      () => {
+        this.voteAgain = true;
+        this.setNameIcon();
       }
     );
   }

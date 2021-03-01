@@ -80,7 +80,7 @@ describe('HomeContentComponentDeep', () => {
   });
 
   describe('#voteSelection', () => {
-    fit(`When user selects a thumb option and clicks on vote button the selected option should be selected
+    it(`When user selects a thumb option and clicks on vote button the selected option should be selected
             to updateLikeUnlikeReport method in reportService in order to save it in a database`, () => {
       // Arrange:
       const reports: Report[] = CloneDataInDeep.clone(reportsMock);
@@ -99,9 +99,18 @@ describe('HomeContentComponentDeep', () => {
       
       const voteBtn: HTMLButtonElement = cardReportComponentDirective[1].nativeElement.querySelector('#voteBtn-1');
       voteBtn.click();
+      
+      component.cdr.detectChanges();
+
+      const thumbsRadio: HTMLElement = cardReportComponentDirective[1].nativeElement.querySelector(`#thumbsRadio-1`);
+      const cardImg = cardReportComponentDirective[1].nativeElement.querySelector('#cardImg-1');
+      const cardContentInfo = cardReportComponentDirective[1].nativeElement.querySelector('#cardContentInfo-1');
 
       // Assert:      
       expect(reportService.updateLikeUnlikeReport).toHaveBeenCalledWith(reportUpdated.id, 'up');
-    });
+      expect(thumbsRadio).toBeNull();
+      expect(cardImg.src).toContain('thumb-up-small.svg');
+      expect(cardContentInfo.textContent).toContain('Thank you for voting!');
+    });    
   });
 });
