@@ -4,7 +4,7 @@
   max-width: 435px;
   color: #fff;
   backdrop-filter: blur(14px);
-  background-color: rgba(130, 130, 130, 0.5);
+  background-color: rgba(130, 130, 130, 0.7);
   font-size: 1rem;  
   &__content {
     padding: 10px;
@@ -13,8 +13,6 @@
         margin: 0;
         font-size: 2rem;
       }
-    }
-    &__description {
     }
     &__reference {
       text-decoration: underline;
@@ -25,9 +23,6 @@
     &__vote {
       margin-bottom: 0px;
     }
-  }
-
-  &__actions {
   }
 
   @include mq-up(sm) {

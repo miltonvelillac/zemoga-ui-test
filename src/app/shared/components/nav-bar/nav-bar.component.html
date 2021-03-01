@@ -1,10 +1,10 @@
 <nav class="nav-bar">
-  <a href="" class="nav-bar__title">Rule of Thumb</a>
+  <a [routerLink]="'/'+routes.home" class="nav-bar__title">Rule of Thumb</a>
   <div class="nav-bar__options">
-    <a href="" class="nav-bar__options__item">Past Trials</a>
-    <a href="" class="nav-bar__options__item">How It Works</a>
-    <a href="" class="nav-bar__options__item">Log In / Sign Up</a>
-    <a href="" class="nav-bar__options__item">
+    <a [routerLink]="'/'+routes.trials" routerLinkActive="active-opt" class="nav-bar__options__item">Past Trials</a>
+    <a [routerLink]="'/'+routes.howItWorks" routerLinkActive="active-opt" class="nav-bar__options__item">How It Works</a>
+    <a [routerLink]="'/'+routes.login" routerLinkActive="active-opt" class="nav-bar__options__item">Log In / Sign Up</a>
+    <a [routerLink]="'/'+routes.search" routerLinkActive="active-opt" class="nav-bar__options__item">
       <img src="assets/icons/search.svg" alt="search functionality">
     </a>
   </div>

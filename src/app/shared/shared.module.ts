@@ -8,6 +8,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ErrorComponent } from './ui/error/error.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { InfoCardComponent } from './ui/cards/info-card/info-card.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -22,7 +23,8 @@ import { InfoCardComponent } from './ui/cards/info-card/info-card.component';
     InfoCardComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     LightButtonComponent,
