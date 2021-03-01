@@ -1,8 +1,0 @@
-<div *ngIf="error" class="error-component">
-  <div class="error-component__content">
-    <p [id]="id" class="error-component__content__message">
-      {{error.message}}
-    </p>
-  </div>
-  <app-light-button [text]="'Retry'" [idButton]="idRetryButton" (click)="retryAction()"></app-light-button>
-</div>
