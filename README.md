@@ -1,5 +1,8 @@
 # ZemogaUiTest
 
+# Styles and UI
+* I didn't use a UI framework like Angular material or bootstrap because I want to show you my skills with scss, but I have had the opportunity to work with the two frameworks mentioned and I consider that I have good experience with both.
+* I used BEM in order to design the css classes.
 # REDUX
 * This is just one screen but I wanted to use redux in order to show you that I now how to use it.
 * I Know how to use ngrx-data too but I didn't like to use it because I wanted to show you the way how I usually create all redux structure including unit testing.
@@ -12,6 +15,6 @@
 # Nodejs
 * I did not do the backend side with the nodejs because the position I am applying to is UI oriented and I did not have enough time to do the backend side.
 
-# Styles and UI
-* I didn't use a UI framework like Angular material or bootstrap because I want to show you my skills with scss, but I have had the opportunity to work with the two frameworks mentioned and I consider that I have good experience with both.
-* I used BEM in order to design the css classes.
+
+# Layout
+* I did not finish the layout because I couldn't dedicate enough time but I would have created components for each section, for the footer I would have created a component in the core layer 
