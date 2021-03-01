@@ -6,6 +6,7 @@ import { VotesResultBarComponent } from './ui/statistics/votes-result-bar/votes-
 import { SpinnerComponent } from './ui/loaders/spinner/spinner.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ErrorComponent } from './ui/error/error.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 
 
@@ -15,7 +16,8 @@ import { ErrorComponent } from './ui/error/error.component';
     ThumbsRadioComponent,
     VotesResultBarComponent,
     SpinnerComponent,
-    ErrorComponent
+    ErrorComponent,    
+    NavBarComponent
   ],
   imports: [
     CommonModule
@@ -26,7 +28,8 @@ import { ErrorComponent } from './ui/error/error.component';
     VotesResultBarComponent,
     SpinnerComponent,
     ErrorComponent,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,    
+    NavBarComponent
   ]
 })
 export class SharedModule { }
