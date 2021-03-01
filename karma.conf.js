@@ -21,6 +21,17 @@ module.exports = function (config) {
       },
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
+    coverageIstanbulReporter: {
+      dir: require('path').join(__dirname, './coverage'),
+      reports: ['html', 'lcovonly', 'text-summary'],
+      fixWebpackSourcePaths: true,
+      thresholds: {
+        statements: 90,
+        lines: 70,
+        branches: 90,
+        functions: 90
+      }
+    },
     jasmineHtmlReporter: {
       suppressAll: true // removes the duplicated traces
     },
